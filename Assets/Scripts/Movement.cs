@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     Rigidbody thisRigidbody;
+    AudioSource thisAudioSource;
     [SerializeField] float thrustValue = 1f;
     [SerializeField] float steerValue = 1f;
+    [SerializeField] AudioClip engineSoundClip;
     Vector3 thrustVector3;
     void Start()
     {
         thisRigidbody = GetComponent<Rigidbody>();
+        thisAudioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //ProcessInput();
         ProcessThrust();
         ProcessSteer();
     }
@@ -27,7 +26,14 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             thisRigidbody.AddRelativeForce(thrustVector3 * thrustValue * Time.deltaTime);
-            //Debug.Log("pressed thrust command");
+            if(!thisAudioSource.isPlaying)
+            {
+                thisAudioSource.PlayOneShot(engineSoundClip);
+            }
+        }
+        else
+        {
+            thisAudioSource.Stop();
         }
     }
 
@@ -36,26 +42,18 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             ExecuteSteer(Vector3.back);
-            //transform.Rotate(Vector3.back * steerValue * Time.deltaTime);
-            //Debug.Log("pressed left steer command");
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             ExecuteSteer(Vector3.forward);
-            //Debug.Log("pressed right steer command");
-            //transform.Rotate(Vector3.forward * steerValue * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             ExecuteSteer(Vector3.left);
-            //transform.Rotate(Vector3.left * steerValue * Time.deltaTime);
-            //Debug.Log("pressed up steer command");
         }
         else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             ExecuteSteer(Vector3.right);
-            //transform.Rotate(Vector3.right * steerValue * Time.deltaTime);
-            //Debug.Log("pressed down steer command");
         }
     }
     void ExecuteSteer(Vector3 thisVector3)
