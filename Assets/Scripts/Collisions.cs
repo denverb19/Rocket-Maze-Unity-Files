@@ -7,11 +7,33 @@ public class Collisions : MonoBehaviour
     [SerializeField] float delayDesired = 1f;
     [SerializeField] AudioClip crashSoundClip;
     [SerializeField] AudioClip successSoundClip;
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem successParticles;
     AudioSource thisAudioSource;
+    private Movement movementScript;
     bool isTransitioning = false;
+    bool collisionsDisabled = false;
     void Start()
     {
         thisAudioSource = GetComponent<AudioSource>();
+        movementScript = GetComponent<Movement>();
+
+    }
+    void Update()
+    {
+        ProcessDebugKeys();
+    }
+    void ProcessDebugKeys()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            StartCoroutine(LoadNextLevel(0f));
+        }
+        else if (Input.GetKey(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+            Debug.Log("Collisions toggled");
+        }
     }
     void OnCollisionEnter(Collision other)
     {
@@ -42,17 +64,30 @@ public class Collisions : MonoBehaviour
     
     void CrashSequence()
     {
-        if (isTransitioning)
+        if (isTransitioning || collisionsDisabled)
         {
             return;
         }
         else
         {
             isTransitioning = true;
-            if (GetComponent<Movement>().enabled == true)//disable movement and stop thruster sounds
+            crashParticles.Play();
+            if (movementScript.enabled == true)//disable movement and stop thruster sounds
             {
-                GetComponent<Movement>().enabled = false;
+                /*GetComponent<Movement>().enabled = false;
                 thisAudioSource.Stop();
+                GetComponent<Movement>().mainEngineParticles.Stop();
+                GetComponent<Movement>().boosterOneParticles.Stop();
+                GetComponent<Movement>().boosterTwoParticles.Stop();
+                GetComponent<Movement>().boosterThreeParticles.Stop();
+                GetComponent<Movement>().boosterFourParticles.Stop();*/
+                movementScript.enabled = false;
+                thisAudioSource.Stop();
+                movementScript.mainEngineParticles.Stop();
+                movementScript.boosterOneParticles.Stop();
+                movementScript.boosterTwoParticles.Stop();
+                movementScript.boosterThreeParticles.Stop();
+                movementScript.boosterFourParticles.Stop();
             }
             if(!thisAudioSource.isPlaying)//Check to avoid multiple crash sounds
             {
@@ -70,9 +105,10 @@ public class Collisions : MonoBehaviour
         else
         {
             isTransitioning = true;
-            if (GetComponent<Movement>().enabled == true)//disable movement and stop thruster sounds
+            successParticles.Play();
+            if (movementScript.enabled == true)//disable movement and stop thruster sounds
             {
-                GetComponent<Movement>().enabled = false;
+                movementScript.enabled = false;
                 thisAudioSource.Stop();
             }
             if(!thisAudioSource.isPlaying)//Check to avoid multiple success sounds
