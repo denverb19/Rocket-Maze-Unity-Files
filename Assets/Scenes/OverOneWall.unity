@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 0.013207495, b: 0.5809278, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 2d529d921b77c8c4e978bcf0bd659494, type: 2}
@@ -193,6 +193,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5701447237011657243, guid: 74685f35eff3b544d9aec88139798661, type: 3}
   m_PrefabInstance: {fileID: 208295184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &217740793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+  m_PrefabInstance: {fileID: 535915102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &246733219
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +242,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7332816500189005071, guid: 50cc55375169d4441afae43bd9a5442b, type: 3}
   m_PrefabInstance: {fileID: 7332816500386089987}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &515883423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+  m_PrefabInstance: {fileID: 351641959673210153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &535915102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 64f8e515b255bc542b4118c023c8def8, type: 2}
     - target: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
       propertyPath: m_LocalScale.x
@@ -300,6 +310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
 --- !u!4 &535915103 stripped
@@ -307,6 +321,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
   m_PrefabInstance: {fileID: 535915102}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &535915104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217740793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd888c88349c384c9326dd460c69da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 8, z: 0}
+  period: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +364,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -378,7 +406,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -394,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 15, y: 75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -470,6 +498,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5701447237011657243, guid: 74685f35eff3b544d9aec88139798661, type: 3}
   m_PrefabInstance: {fileID: 725263242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &930647181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+  m_PrefabInstance: {fileID: 1915916772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &971917499
 PrefabInstance:
@@ -641,8 +674,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 419003887}
-  - {fileID: 351641959673210154}
   - {fileID: 535915103}
+  - {fileID: 351641959673210154}
   - {fileID: 1915916773}
   - {fileID: 208295185}
   - {fileID: 1191864027}
@@ -725,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
 --- !u!4 &1915916773 stripped
@@ -732,6 +769,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
   m_PrefabInstance: {fileID: 1915916772}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915916774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930647181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd888c88349c384c9326dd460c69da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 24, z: 0}
+  period: 4
 --- !u!1001 &1916007351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -811,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 64f8e515b255bc542b4118c023c8def8, type: 2}
     - target: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
       propertyPath: m_LocalScale.y
@@ -861,6 +912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 8376910230002913498, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
 --- !u!4 &351641959673210154 stripped
@@ -868,6 +923,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4977940301006598284, guid: d7a55ebc09545e54e8de0e70a4b837ce, type: 3}
   m_PrefabInstance: {fileID: 351641959673210153}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &351641959673210155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515883423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd888c88349c384c9326dd460c69da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 16, z: 0}
+  period: 3
 --- !u!1001 &1317451304462236249
 PrefabInstance:
   m_ObjectHideFlags: 0

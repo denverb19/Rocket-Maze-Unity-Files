@@ -79,9 +79,12 @@ public class Movement : MonoBehaviour
             {
                 boosterFourParticles.Play();
             }
+            StopSteeringThrusters(4);
+            /*
             boosterOneParticles.Stop();
             boosterTwoParticles.Stop();
             boosterThreeParticles.Stop();
+            */
             ExecuteSteer(Vector3.back);
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -90,9 +93,12 @@ public class Movement : MonoBehaviour
             {
                 boosterThreeParticles.Play();
             }
+            StopSteeringThrusters(3);
+            /*
             boosterOneParticles.Stop();
             boosterTwoParticles.Stop();
             boosterFourParticles.Stop();
+            */
             ExecuteSteer(Vector3.forward);
         }
         else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -101,9 +107,12 @@ public class Movement : MonoBehaviour
             {
                 boosterOneParticles.Play();
             }
+            StopSteeringThrusters(1);
+            /*
             boosterTwoParticles.Stop();
             boosterThreeParticles.Stop();
             boosterFourParticles.Stop();
+            */
             ExecuteSteer(Vector3.left);
         }
         else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
@@ -112,21 +121,60 @@ public class Movement : MonoBehaviour
             {
                 boosterTwoParticles.Play();
             }
+            StopSteeringThrusters(2);
+            /*
             boosterOneParticles.Stop();
             boosterThreeParticles.Stop();
             boosterFourParticles.Stop();
+            */
             ExecuteSteer(Vector3.right);
         }
         else
         {
+            StopSteeringThrusters(0);
+            /*
             boosterOneParticles.Stop();
             boosterTwoParticles.Stop();
             boosterThreeParticles.Stop();
             boosterFourParticles.Stop();
+            */
         }
     }
 
-
+    void StopSteeringThrusters(int boosterToKeep)
+    {
+        switch(boosterToKeep)
+        {
+            case 0:
+                boosterOneParticles.Stop();
+                boosterTwoParticles.Stop();
+                boosterThreeParticles.Stop();
+                boosterFourParticles.Stop();
+                break;
+            case 1:
+                boosterTwoParticles.Stop();
+                boosterThreeParticles.Stop();
+                boosterFourParticles.Stop();
+                break;
+            case 2:
+                boosterOneParticles.Stop();
+                boosterThreeParticles.Stop();
+                boosterFourParticles.Stop();
+                break;
+            case 3:
+                boosterOneParticles.Stop();
+                boosterTwoParticles.Stop();
+                boosterFourParticles.Stop();
+                break;
+            case 4:
+                boosterOneParticles.Stop();
+                boosterTwoParticles.Stop();
+                boosterThreeParticles.Stop();
+                break;
+            default:
+                break;
+        }
+    }
     private void BeginThrust()
     {
         thisRigidbody.AddRelativeForce(thrustVector3 * thrustValue * Time.deltaTime);
